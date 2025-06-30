@@ -82,8 +82,7 @@ Trong học tăng cường, có hai khái niệm là khám phá (exploration) v�
 ## Code
 Code để dễ hình dung nhé!
 
-<details>
-    <summary>Môi trường, Tác nhân</summary>
+<details><summary markdown="span">Môi trường, Tác nhân</summary>
 
 ```python
 class CartPoleEnv:
@@ -167,8 +166,7 @@ class QLearningAgent:
 
 </details>
 
-<details>
-    <summary>Huấn luyện</summary>
+<details><summary markdown="span">Huấn luyện</summary>
 
 ```python
 def train(agent, env, episodes, max_timesteps=200):
@@ -199,8 +197,7 @@ def train(agent, env, episodes, max_timesteps=200):
 
 </details>
 
-<details>
-    <summary>Kiểm thử</summary>
+<details><summary markdown="span">Kiểm thử</summary>
 
 ```python
 def evaluate(agent, env, episodes, is_render):
