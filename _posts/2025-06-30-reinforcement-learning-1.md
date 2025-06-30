@@ -69,15 +69,15 @@ $$
 
 Trong đó:
 
-* $Q(s, a)$: Giá trị Q hiện tại của cặp trạng thái $s$ và hành động $a$.
-* $\alpha$: Tốc độ học (learning rate), giúp điều chỉnh mức độ cập nhật Q-value.
-* $r$: Phần thưởng nhận được sau khi thực hiện hành động $a$ tại trạng thái $s$.
-* $\gamma$: Hệ số chiết khấu (discount factor), dùng để điều chỉnh sự quan trọng của các phần thưởng trong tương lai.
-* $\max_{a'} Q(s', a')$: Giá trị Q tối đa của các hành động có thể thực hiện tại trạng thái tiếp theo $s'$.
+* \\(Q(s, a)\\): Giá trị Q hiện tại của cặp trạng thái \\(s\\) và hành động \\(a\\).
+* \\(\alpha\\): Tốc độ học (learning rate), giúp điều chỉnh mức độ cập nhật Q-value.
+* \\(r\\): Phần thưởng nhận được sau khi thực hiện hành động \\(a\\) tại trạng thái \\(s\\).
+* \\(\gamma\\): Hệ số chiết khấu (discount factor), dùng để điều chỉnh sự quan trọng của các phần thưởng trong tương lai.
+* \\(\max_{a'} Q(s', a')\\): Giá trị Q tối đa của các hành động có thể thực hiện tại trạng thái tiếp theo \\(s'\\).
 
-Trong học tăng cường, có hai khái niệm là khám phá (exploration) và khai thác (exploitation), là cách mà tác nhân chọn một hành động để thực hiện. Để chọn hành động, thuật toán sử dụng chính sách epsilon-greedy. Nghĩa là, với Q-learning, với xác suất $1−\epsilon$, tác nhân chọn hành động có giá trị Q cao nhất (khai thác); với xác suất $\epsilon$, tác nhân chọn hành động ngẫu nhiên (khám phá) để khám phá môi trường.
+Trong học tăng cường, có hai khái niệm là khám phá (exploration) và khai thác (exploitation), là cách mà tác nhân chọn một hành động để thực hiện. Để chọn hành động, thuật toán sử dụng chính sách epsilon-greedy. Nghĩa là, với Q-learning, với xác suất \\(1−\epsilon\\), tác nhân chọn hành động có giá trị Q cao nhất (khai thác); với xác suất \\(\epsilon\\), tác nhân chọn hành động ngẫu nhiên (khám phá) để khám phá môi trường.
 
-**Tóm lại**, để bắt đầu học tăng cường, khởi đầu từ một trạng thái $\rightarrow$ ta mô phỏng môi trường và hành động của tác nhân $\rightarrow$ cập nhật bảng Q $\rightarrow$ tiếp tục mô phỏng và cập nhật cho đến khi kết thúc trò chơi, hoặc đến số bước nhất định. 
+**Tóm lại**, để bắt đầu học tăng cường, khởi đầu từ một trạng thái \\(\rightarrow\\) ta mô phỏng môi trường và hành động của tác nhân \\(\rightarrow\\) cập nhật bảng Q \\(\rightarrow\\) tiếp tục mô phỏng và cập nhật cho đến khi kết thúc trò chơi, hoặc đến số bước nhất định. 
 
 ## Code
 Code để dễ hình dung nhé!
@@ -164,6 +164,7 @@ class QLearningAgent:
         td_error = td_target - self.q_table[state + (action,)]
         self.q_table[state + (action,)] += self.alpha * td_error
 ```
+
 </details>
 
 <details>
@@ -195,6 +196,7 @@ def train(agent, env, episodes, max_timesteps=200):
     
     return rewards
 ```
+
 </details>
 
 <details>
@@ -219,13 +221,14 @@ def evaluate(agent, env, episodes, is_render):
         
         print(f"Episode {episode}, Total Reward: {total_reward}")
 ```
+
 </details>
 
 ## Tại sao?
 
 Ta đã biết công thức cập nhật của Q: lấy giá trị Q cũ, cộng thêm một phần nhỏ của chênh lệch giữa phần thưởng tương lai dự kiến  và giá trị Q cũ. Nhưng tại sao người ta lại dùng công thức này?
 
-###### Quy trình ra quyết định Markov (Markov Decision Process - MDP)
+#### Quy trình ra quyết định Markov (Markov Decision Process - MDP)
 
 Trong trí tuệ nhân tạo, người ta dùng thuật ngữ `Quy trình ra quyết định Markov (Markov Decision Process - MDP)` để mô hình hóa các tình huống mà trong đó các quyết định được đưa ra liên tiếp và kết quả của các hành động là không chắc chắn. 
 
@@ -235,43 +238,43 @@ $$
 MDP = (S, A, P, R, \gamma)
 $$
 
-* $S$: Tập trạng thái.
-* $A$: Tập hành động.
-* $P(s' \mid s, a)$: Xác suất chuyển từ trạng thái $s$ sang trạng thái $s'$ khi thực hiện hành động $a$.
-* $R(s, a)$: Phần thưởng nhận được khi thực hiện hành động $a$ tại trạng thái $s$. 
-* $\gamma$: Hệ số chiết khấu.
+* \\(S\\): Tập trạng thái.
+* \\(A\\): Tập hành động.
+* \\(P(s' \mid s, a)\\): Xác suất chuyển từ trạng thái \\(s\\) sang trạng thái \\(s'\\) khi thực hiện hành động \\(a\\).
+* \\(R(s, a)\\): Phần thưởng nhận được khi thực hiện hành động \\(a\\) tại trạng thái \\(s\\). 
+* \\(\gamma\\): Hệ số chiết khấu.
 
 Để giải được MDP, người ta thường dùng `Quy hoạch động (Dynamic Programming - DP)` dựa trên `Phương trình Bellman`.
 
-Trong Q-learning, ta không cần phải biết mô hình môi trường (bao gồm các xác suất chuyển trạng thái $P(s' \mid s, a)$) khi cập nhật Q-values. Thay vào đó, Q-learning chỉ cần quan sát trạng thái, hành động, phần thưởng và trạng thái tiếp theo trong quá trình tương tác với môi trường là được. Do đó, ta có thể "tạm quên đi" $P(s' \mid s, a)$,
+Trong Q-learning, ta không cần phải biết mô hình môi trường (bao gồm các xác suất chuyển trạng thái \\(P(s' \mid s, a)\\)) khi cập nhật Q-values. Thay vào đó, Q-learning chỉ cần quan sát trạng thái, hành động, phần thưởng và trạng thái tiếp theo trong quá trình tương tác với môi trường là được. Do đó, ta có thể "tạm quên đi" \\(P(s' \mid s, a)\\),
 
-###### Phương trình Bellman cho Giá trị Trạng thái (Value Function)
+#### Phương trình Bellman cho Giá trị Trạng thái (Value Function)
 
-Phương trình Bellman cho **giá trị trạng thái** $V(s)$ được viết như sau:
+Phương trình Bellman cho **giá trị trạng thái** \\(V(s)\\) được viết như sau:
 
 $$ V(s) = \max_a \left(R(s,a) + \gamma V(s') \right) $$
 
-###### Phương trình Bellman cho Giá trị Hành động (Q-value Function)
+#### Phương trình Bellman cho Giá trị Hành động (Q-value Function)
 
-Trong phương trình Bellman cho giá trị trạng thái, chúng ta quan tâm đến tất cả các trạng thái và tất cả các hành động khả thi. Vậy khi bỏ hàm $\max$, chúng ta sẽ được công thức như là giá trị của một trạng thái được tạo ra cho chỉ một hành động khả thi.
+Trong phương trình Bellman cho giá trị trạng thái, chúng ta quan tâm đến tất cả các trạng thái và tất cả các hành động khả thi. Vậy khi bỏ hàm \\(\max\\), chúng ta sẽ được công thức như là giá trị của một trạng thái được tạo ra cho chỉ một hành động khả thi.
 
 Dựa trên ý tưởng đó, phương trình Bellman áp dụng cho **giá trị hành động** được viết như sau:
 
 $$ Q(s, a) = R(s, a) + \gamma V(s') $$
 
-Để tạo nên sự đồng nhất, ta viết lại $V(s')$ bằng $\max_{a'} Q(s', a')$ vì chúng ta coi giá trị của một trạng thái được tính bằng giá trị lớn nhất có thể của hành động $Q(s, a)$. 
+Để tạo nên sự đồng nhất, ta viết lại \\(V(s')\\) bằng \\(\max_{a'} Q(s', a')\\) vì chúng ta coi giá trị của một trạng thái được tính bằng giá trị lớn nhất có thể của hành động \\(Q(s, a)\\). 
 
 $$ Q(s, a) = R(s, a) + \gamma \max{a'} Q(s', a') $$
 
-###### Chênh lệch thời gian (Temporal Difference - TD)
+#### Chênh lệch thời gian (Temporal Difference - TD)
 
 Môi trường không phải bất biến, vậy phải làm như nào để nắm bắt được sự thay đổi của môi trường? Rất đơn giản, lấy giá trị Q mới trừ giá trị Q cũ!
 
-$$ \alpha TD(s,a) = Q(s, a)\_{new} - Q(s,a)\_{old} $$
+$$ \alpha TD(s,a) = Q(s, a)_{new} - Q(s,a)_{old} $$
 
 Vậy
 
-$$ Q(s, a)\_{new} \leftarrow Q(s, a)\_{old} + \alpha TD(s,a) = Q(s, a)\_{old} + \alpha \left( r + \gamma \cdot \max_{a'} Q(s', a') - Q(s, a) \right) $$
+$$ Q(s, a)_{new} \leftarrow Q(s, a)_{old} + \alpha TD(s,a) = Q(s, a)_{old} + \alpha \left( r + \gamma \cdot \max_{a'} Q(s', a') - Q(s, a)_{old} \right) $$
 
 ## Sự hội tụ
 
@@ -283,19 +286,19 @@ Nói chung, phải đáp ứng hai điều kiện để đảm bảo sự hội 
 
     Về mặt hình thức, điều này đòi hỏi tổng tỷ lệ học phải phân kỳ, nhưng tổng bình phương của chúng phải hội tụ. 
 
-    $$\sum\_{t}^{\infty} \alpha\_t = \infty \quad \sum\_{t}^{\infty} \alpha^2\_t < \infty$$
+    $$\sum_{t}^{\infty} \alpha_t = \infty \quad \quad\sum_{t}^{\infty} \alpha^2_t < \infty$$
 
     > Ví dụ: `1/1, 1/2, 1/3, 1/4, ...`
 
 - Mỗi cặp trạng thái - hành động phải được truy cập vô hạn lần. 
 
-    Nghĩa là, về mặt toán học, mỗi hành động trong mọi trạng thái phải có xác suất được chính sách chọn > 0. Trong thực tế, sử dụng chính sách epsilon-greedy ($\epsilon > 0$) đảm bảo rằng điều kiện này được đáp ứng.
+    Nghĩa là, về mặt toán học, mỗi hành động trong mọi trạng thái phải có xác suất được chính sách chọn > 0. Trong thực tế, sử dụng chính sách epsilon-greedy (\\(\epsilon > 0\\)) đảm bảo rằng điều kiện này được đáp ứng.
 
 Dưới các điều kiện này, Q-learning sẽ hội tụ tới giá trị tối ưu trong thời gian vô hạn, nhưng trong thực tế, thường có một số yếu tố như độ chính xác của mô phỏng, việc dừng quá sớm, hoặc tốc độ học không phù hợp có thể ảnh hưởng đến quá trình hội tụ.
 
 ## Nhận xét
 
-- Về mặt lý thuyết, Q-Learning có thể hội tụ về giải pháp tối ưu nhưng thường không rõ ràng về cách điều chỉnh các siêu tham số như $\epsilon$ và $\alpha$.
+- Về mặt lý thuyết, Q-Learning có thể hội tụ về giải pháp tối ưu nhưng thường không rõ ràng về cách điều chỉnh các siêu tham số như \\(\epsilon\\) và \\(\alpha\\).
 
 - Khi số lượng trạng thái và hành động tăng lên, số lượng giá trị Q cần lưu trữ và cập nhật cũng tăng theo cấp số nhân, làm cho Q-learning gặp phải vấn đề về hiệu suất và bộ nhớ. 
 
