@@ -225,7 +225,7 @@ def evaluate(agent, env, episodes, is_render):
 
 Ta đã biết công thức cập nhật của Q: lấy giá trị Q cũ, cộng thêm một phần nhỏ của chênh lệch giữa phần thưởng tương lai dự kiến  và giá trị Q cũ. Nhưng tại sao người ta lại dùng công thức này?
 
-#### Quy trình ra quyết định Markov (Markov Decision Process - MDP)
+### Quy trình ra quyết định Markov (Markov Decision Process - MDP)
 
 Trong trí tuệ nhân tạo, người ta dùng thuật ngữ `Quy trình ra quyết định Markov (Markov Decision Process - MDP)` để mô hình hóa các tình huống mà trong đó các quyết định được đưa ra liên tiếp và kết quả của các hành động là không chắc chắn. 
 
@@ -243,15 +243,15 @@ $$
 
 Để giải được MDP, người ta thường dùng `Quy hoạch động (Dynamic Programming - DP)` dựa trên `Phương trình Bellman`.
 
-Trong Q-learning, ta không cần phải biết mô hình môi trường (bao gồm các xác suất chuyển trạng thái \\(P(s' \mid s, a)\\)) khi cập nhật Q-values. Thay vào đó, Q-learning chỉ cần quan sát trạng thái, hành động, phần thưởng và trạng thái tiếp theo trong quá trình tương tác với môi trường là được. Do đó, ta có thể "tạm quên đi" \\(P(s' \mid s, a)\\),
+Trong Q-learning, ta không cần phải biết mô hình môi trường (bao gồm các xác suất chuyển trạng thái \\(P(s' \mid s, a)\\)) khi cập nhật Q-values. Thay vào đó, Q-learning chỉ cần quan sát trạng thái, hành động, phần thưởng và trạng thái tiếp theo trong quá trình tương tác với môi trường là được. Do đó, ta có thể "tạm quên đi" \\(P(s' \mid s, a)\\).
 
-#### Phương trình Bellman cho Giá trị Trạng thái (Value Function)
+### Phương trình Bellman cho Giá trị Trạng thái (Value Function)
 
 Phương trình Bellman cho **giá trị trạng thái** \\(V(s)\\) được viết như sau:
 
 $$ V(s) = \max_a \left(R(s,a) + \gamma V(s') \right) $$
 
-#### Phương trình Bellman cho Giá trị Hành động (Q-value Function)
+### Phương trình Bellman cho Giá trị Hành động (Q-value Function)
 
 Trong phương trình Bellman cho giá trị trạng thái, chúng ta quan tâm đến tất cả các trạng thái và tất cả các hành động khả thi. Vậy khi bỏ hàm \\(\max\\), chúng ta sẽ được công thức như là giá trị của một trạng thái được tạo ra cho chỉ một hành động khả thi.
 
@@ -261,9 +261,9 @@ $$ Q(s, a) = R(s, a) + \gamma V(s') $$
 
 Để tạo nên sự đồng nhất, ta viết lại \\(V(s')\\) bằng \\(\max_{a'} Q(s', a')\\) vì chúng ta coi giá trị của một trạng thái được tính bằng giá trị lớn nhất có thể của hành động \\(Q(s, a)\\). 
 
-$$ Q(s, a) = R(s, a) + \gamma \max{a'} Q(s', a') $$
+$$ Q(s, a) = R(s, a) + \gamma \max_{a'} Q(s', a') $$
 
-#### Chênh lệch thời gian (Temporal Difference - TD)
+### Chênh lệch thời gian (Temporal Difference - TD)
 
 Môi trường không phải bất biến, vậy phải làm như nào để nắm bắt được sự thay đổi của môi trường? Rất đơn giản, lấy giá trị Q mới trừ giá trị Q cũ!
 
