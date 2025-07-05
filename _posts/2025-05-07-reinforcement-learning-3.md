@@ -98,7 +98,7 @@ $$ = \mathbb{E}_{\tau \sim \pi_\theta} \nabla_\theta \log \textcolor{blue}{P(\ta
 
 Ta tiếp tục rút gọn \\(\nabla_\theta \log \textcolor{blue}{P(\tau; \theta)}\\). 
 
-Với \\(\mu(s_0)\\) là phân phối trạng thái ban đầu và \\(P\left(s_{t+1}^{(i)} \mid s_{t}^{(i)}, a_{t}^{(i)}\right)\) là MDP dynamics của một quỹ đạo \\(\tau^{(i)}\\) nào đó,
+Với \\(\mu(s_0)\\) là phân phối trạng thái ban đầu và \\(P\left(s_{t+1}^{(i)} \mid s_{t}^{(i)}, a_{t}^{(i)}\right)\\) là MDP dynamics của một quỹ đạo \\(\tau^{(i)}\\) nào đó,
 
 $$
 \nabla_\theta \log \textcolor{blue}{P\left(\tau^{(i)}; \theta \right)} = \nabla_\theta \log \left[ \mu(s_0) \prod_{t=0}^{T} P\left(s_{t+1}^{(i)} \mid s_{t}^{(i)}, a_{t}^{(i)}\right) \pi_\theta \left(a_{t}^{(i)} \mid s_{t}^{(i)}\right) \right]
