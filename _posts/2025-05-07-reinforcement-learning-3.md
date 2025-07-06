@@ -46,7 +46,7 @@ $$ J(\theta) = \mathbb{E}_{\tau \sim \pi} \left[ R(\tau)\right] = \sum_{\tau} \t
 
 - \\(R(\tau)\\): Phần thưởng tích lũy từ một quỹ đạo bất kỳ.
 
-	$$ \textcolor{purple}{R(\tau)} = r_{t+1} + \gamma r_{t+2} + \gamma^2 r_{t+3} + \gamma^3 r_{t+4} + \dots $$
+	$$ \textcolor{purple}{R(\tau)} = \sum_{t=0}^{T} \gamma^t r_t $$
 
 Để tối đa hóa \\(J(\theta)\\) thì rất tự nhiên, ta dùng **gradient ascent**,
 
