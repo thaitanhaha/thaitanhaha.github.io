@@ -206,9 +206,7 @@ Trong hàm mất mát, mặc dù đã dùng semi-gradient, ta vẫn đang sử d
 Vì vậy, người ta thường
 
 1. Sử dụng một mạng riêng biệt với các tham số cố định để ước lượng giá trị Q-target. Khi đó hàm mất mát thường được viết lại là
-
-$$ L(\theta) = \left( r + \gamma \cdot \max_{a'} \hat{Q}(s', a'; \theta^{-}) - Q(s,a;\theta) \right)^2 $$
-
+	$$ L(\theta) = \left( r + \gamma \cdot \max_{a'} \hat{Q}(s', a'; \theta^{-}) - Q(s,a;\theta) \right)^2 $$
 2. Sao chép các tham số từ mạng Deep Q-Network sau mỗi \\(C\\) bước để cập nhật mạng này.
 
 ## Nhận xét

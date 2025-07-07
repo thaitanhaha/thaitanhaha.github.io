@@ -27,17 +27,11 @@ Khác với các phương pháp học có giám sát và không giám sát, họ
 Mục tiêu của học tăng cường là giúp tác nhân học được một chính sách tối ưu, tức là một chiến lược cho phép tác nhân chọn hành động tốt nhất ở mỗi trạng thái để tối đa hóa tổng phần thưởng tích lũy theo thời gian. Tức là
 
 1. Tác nhân bắt đầu ở một trạng thái cụ thể.
-
 2. Dựa trên trạng thái hiện tại, tác nhân chọn một hành động để thực hiện.
-
-- Khám phá (exploration): Tác nhân thử những hành động *mới*.
-
-- Khai thác (exploitation): Tác nhân tận dụng những hành động *đã biết* để đạt được phần thưởng cao nhất.
-
+   - Khám phá (exploration): Tác nhân thử những hành động *mới*.
+   - Khai thác (exploitation): Tác nhân tận dụng những hành động *đã biết* để đạt được phần thưởng cao nhất.
 3. Môi trường thay đổi trạng thái theo hành động của tác nhân và trả về phần thưởng.
-
-4. Tác nhân nhận phần thưởng và cập nhật chiến lược hành động của mình. 
-
+4. Tác nhân nhận phần thưởng và cập nhật chiến lược hành động của mình.
 
 ## Q - learning
 
