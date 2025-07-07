@@ -19,9 +19,19 @@ Deep Q-Learning sử dụng một mạng nơ-ron (Neural network) để ước t
 
 ![Deep Q-learning](https://www.baeldung.com/wp-content/uploads/sites/4/2023/04/dql-vs-ql-1.png)
 
-Trong mạng nơ-ron thì **hàm mất mát** là vô cùng quan trọng! Tất nhiên, hàm mất mát phải tính được sai số giữa Q-value thực tế và dự đoán. Vậy thì đơn giản thôi, kết hợp TD và MSE lại. Nó chính là 
+Trong mạng nơ-ron thì **hàm mất mát** là vô cùng quan trọng! Tất nhiên, hàm mất mát phải tính được sai số giữa giá trị Q dự đoán và giá trị Q mục tiêu (Q-target). Vậy thì đơn giản thôi, kết hợp TD và MSE lại. Với \\(Q(s,a;\theta)\\) là mạng cần học, hàm mất mát chính là 
 
-$$ Loss = \left( r + \gamma \cdot \max_{a'} Q(s', a') - Q(s, a) \right)^2 $$
+$$ L(\theta) = \left( r + \gamma \cdot \max_{a'} Q(s', a'; \theta) - Q(s,a;\theta) \right)^2 $$
+
+Trong đó, \\(\max_{a'} Q(s', a'; \theta)\\) là dự đoán về giá trị tối ưu cho hành động tiếp theo sau khi chuyển sang trạng thái mới (chính là Q-target). 
+
+Mặc dù \\(Q(s', a'; \theta)\\) phụ thuộc vào \\(\theta\\), người ta coi đây là một giá trị hằng số khi tính hàm mất mát, tức là **không có đạo hàm** ở đại lượng này.
+
+> Đây gọi là semi-gradient. Có thể hiểu rằng, tính luôn đạo hàm cho \\(Q(s', a'; \theta)\\) sẽ làm thay đổi chính mục tiêu mà ta đang cố gắng học theo. Điều này dẫn đến học không ổn định, vì mục tiêu luôn "di chuyển".
+
+Khi đó, 
+
+$$ \nabla_\theta L(\theta) = -2 \left( r + \gamma \cdot \max_{a'} Q(s', a'; \theta) - Q(s,a;\theta) \right) \nabla_\theta Q(s,a;\theta)$$
 
 ## Experience Replay 
 
@@ -191,19 +201,15 @@ def evaluate(agent, env, episodes=10):
 
 ## Fixed Q-Target
 
-Nhìn lại \\( Loss = \left( r + \gamma \cdot \max_{a'} Q(s', a') - Q(s, a) \right)^2 \\)
-
-Khi chúng ta muốn tính sai số TD (cũng chính là hàm mất mát), chúng ta tính hiệu số giữa giá trị TD mục tiêu (Q-Target) và giá trị Q hiện tại (ước lượng của Q).
-
-Vấn đề là, chúng ta đang sử dụng cùng một tập tham số để ước lượng cả giá trị TD mục tiêu lẫn giá trị Q. Do đó, tồn tại một mối tương quan nào đó giữa TD mục tiêu và các tham số mà chúng ta đang thay đổi. Cho nên, ở mỗi bước huấn luyện, cả giá trị Q và giá trị mục tiêu đều thay đổi. 
-
-> Chúng ta đang tiến gần hơn đến mục tiêu, nhưng mục tiêu cũng đang di chuyển!
+Trong hàm mất mát, mặc dù đã dùng semi-gradient, ta vẫn đang sử dụng cùng một tập tham số để ước lượng cả giá trị Q-Target lẫn giá trị Q. Do đó, tồn tại một mối tương quan nào đó giữa Q-Target và các tham số mà chúng ta đang thay đổi. Cho nên, ở mỗi bước huấn luyện, cả giá trị Q và Q-Target đều thay đổi. 
 
 Vì vậy, người ta thường
 
-- Sử dụng một mạng riêng biệt với các tham số cố định để ước lượng giá trị TD mục tiêu.
+1. Sử dụng một mạng riêng biệt với các tham số cố định để ước lượng giá trị Q-target. Khi đó hàm mất mát thường được viết lại là
 
-- Sao chép các tham số từ mạng Deep Q-Network sau mỗi C bước để cập nhật mạng này.
+$$ L(\theta) = \left( r + \gamma \cdot \max_{a'} \hat{Q}(s', a'; \theta^{-}) - Q(s,a;\theta) \right)^2 $$
+
+2. Sao chép các tham số từ mạng Deep Q-Network sau mỗi \\(C\\) bước để cập nhật mạng này.
 
 ## Nhận xét
 
