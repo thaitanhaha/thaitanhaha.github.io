@@ -103,7 +103,7 @@ Các bước thực hiện của Actor-Critic là
 
 	$$ \theta \leftarrow \theta + \alpha \cdot \nabla_\theta \log \pi_\theta (a_t \mid s_t) \cdot \hat{q}_{\omega} (s_t, a_t) $$
     
-5. Dựa trên tham số đã được cập nhật, Actor tạo ra hành động tiếp theo cần thực hiện $a_{t+1}$ dựa trên trạng thái mới $s_{t+1}$.
+5. Dựa trên tham số đã được cập nhật, Actor tạo ra hành động tiếp theo cần thực hiện \\(a_{t+1}\\) dựa trên trạng thái mới \\(s_{t+1}\\).
 
 6. Cập nhật Critic dựa trên MSE và semi-gradient
 
