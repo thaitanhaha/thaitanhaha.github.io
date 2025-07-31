@@ -18,7 +18,7 @@ Nói chung, ta muốn chính sách được cập nhật sao cho $$\underbrace{\
 
 ### 1 - \\(\mathcal{L}_{\theta}(\theta')\\)
 
-Gọi \\(\mathcal{L}_{\theta}(\theta')\\) là hàm mục tiêu ước tính sự cải thiện trong phần thưởng kỳ vọng khi chuyển từ \\(\pi_\theta\\) sang \\(\pi_{\theta'}\\). Với \\(A(s_t,a_t)\\) là hàm lợi thế thì
+Gọi $$\mathcal{L}_{\theta}(\theta')$$ là hàm mục tiêu ước tính sự cải thiện trong phần thưởng kỳ vọng khi chuyển từ \\(\pi_\theta\\) sang \\(\pi_{\theta'}\\). Với $$A(s_t,a_t)$$ là hàm lợi thế thì
 
 $$ \mathcal{L}_{\theta}(\theta') = \mathbb{E}_{\tau \sim \pi_\theta} \left[ \sum_{t=0}^{T} \gamma^t \dfrac{\pi_{\theta'}(a_t \mid s_t)}{\pi_{\theta}(a_t \mid s_t)} A^{\pi_{\theta}}(s_t, a_t)\right]$$
 
@@ -59,9 +59,9 @@ $$ \theta_{k+1} = \theta_k + \textcolor{orange}{\sqrt{\dfrac{2 \delta}{g^\top H^
 
 Về mặt tính toán, tính \\(H\\) đã khó, tính \\(H^{-1}\\) còn khó hơn, \\(\mathcal{O}(n^3)\\), nên người ta dùng Truncated Natural Policy Gradient để ước tính \\(x = H^{-1}g\\). Cụ thể hơn, ta giải phương trình \\(Hx = g\\) với thuật toán Conjugate Gradient. 
 
-<details><summary markdown="span">Thuật toán Conjugate Gradient</summary>
 
-[**Thuật toán Conjugate Gradient**](https://www.math.hkust.edu.hk/~mamu/courses/531/cg.pdf) để giải \\(Ax=b\\) 
+<div style="border: 2px solid gray; padding: 10px; border-radius: 16px">
+<details><summary markdown="span">[Thuật toán Conjugate Gradient](https://www.math.hkust.edu.hk/~mamu/courses/531/cg.pdf) để giải \\(Ax=b\\) </summary>
 
 Gọi \\(x_0 = 0\\), \\(r_0 = Ax_0 - b\\) và \\(p_0 = -r_0\\).
 
@@ -75,6 +75,7 @@ Với \\(k\\) chạy từ 0,
 
 Kết quả: \\(x_{k+1}\\) là nghiệm gần đúng của \\(Ax = b\\)
 </details>
+</div>
 
 Khi đó, 
 
@@ -96,7 +97,7 @@ Vấn đề là, do các sai số xấp xỉ được tạo ra bởi khai triể
 
 Tức là, giảm dần kích thước của cập nhật theo từng bước cho đến khi tìm được cập nhật đầu tiên không vi phạm ràng buộc. Quy trình này có thể được xem như là thu nhỏ vùng tin cậy, tức là vùng mà trong đó chúng ta tin rằng cập nhật thực sự sẽ cải thiện mục tiêu.
 
-Với thuật toán trên, ở bước tính \\(\Delta_k = \sqrt{\dfrac{2\delta}{x_k^T H_k x_k}} x_k\\). Để giảm dần vùng tin cậy, ta dùng một $0 < \alpha < 1$. Với \\(j = 0,1,\dots,L\\)
+Với thuật toán trên, ở bước tính \\(\Delta_k = \sqrt{\dfrac{2\delta}{x_k^T H_k x_k}} x_k\\). Để giảm dần vùng tin cậy, ta dùng một \\(0 < \alpha < 1\\). Với \\(j = 0,1,\dots,L\\)
 
 1. Tính \\(\theta = \theta_k + \alpha^j \Delta_k\\)
 2. Nếu $$\mathcal{L}_{\theta_k}(\theta) \ge 0$$ và $$\mathcal{\bar{D}}_{KL}(\theta \mid \mid \theta_k) \le \delta$$ thì dừng vòng lặp, chọn \\(\theta_{k+1} = \theta_k + \alpha^j \Delta_k\\). 
