@@ -2,6 +2,7 @@
 title: 'Reinforcement learning 1 - Q-Learning'
 date: 2025-06-30
 permalink: /posts/reinforcement-learning-1/
+excerpt: 'This paper is about the number 1. The number 2 is left for future work.'
 tags:
   - reinforcement learning
 ---
