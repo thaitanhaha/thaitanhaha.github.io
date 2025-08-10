@@ -2,6 +2,7 @@
 title: 'Reinforcement learning 4 - Actor Critic'
 date: 2025-07-10
 permalink: /posts/reinforcement-learning-4/
+excerpt: 'Actor-Critic là một phương pháp học tăng cường kết hợp giữa hai thành phần Actor và Critic. Mô hình này tận dụng ưu điểm của cả Policy-based và Value-based để học nhanh và ổn định hơn trong các môi trường phức tạp.'
 tags:
   - reinforcement learning
 ---

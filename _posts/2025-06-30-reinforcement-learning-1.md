@@ -2,7 +2,7 @@
 title: 'Reinforcement learning 1 - Q-Learning'
 date: 2025-06-30
 permalink: /posts/reinforcement-learning-1/
-excerpt: 'This paper is about the number 1. The number 2 is left for future work.'
+excerpt: 'Q-Learning là một thuật toán học tăng cường nền tảng, giúp các tác nhân học được hành động tốt nhất cần thực hiện trong một môi trường nhất định bằng cách tối đa hóa phần thưởng theo thời gian.'
 tags:
   - reinforcement learning
 ---

@@ -2,6 +2,7 @@
 title: 'Reinforcement learning 5 - Trust Region Policy Optimization'
 date: 2025-07-31
 permalink: /posts/reinforcement-learning-5/
+excerpt: 'Trust Region Policy Optimization (TRPO) tối ưu chính sách một cách ổn định bằng cách giới hạn bước cập nhật trong một vùng tin cậy. Điều này giúp tránh việc thay đổi chính sách quá đột ngột, từ đó cải thiện hiệu suất và độ ổn định.'
 tags:
   - reinforcement learning
 ---

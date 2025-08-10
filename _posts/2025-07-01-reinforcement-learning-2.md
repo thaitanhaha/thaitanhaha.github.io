@@ -2,6 +2,7 @@
 title: 'Reinforcement learning 2 - Deep Q-Learning'
 date: 2025-07-01
 permalink: /posts/reinforcement-learning-2/
+excerpt: 'Deep Q-Learning là sự kết hợp giữa Q-Learning và mạng nơ-ron, cho phép tác nhân học các hành động tối ưu trong môi trường phức tạp có không gian trạng thái lớn.'
 tags:
   - reinforcement learning
 ---

@@ -2,6 +2,7 @@
 title: 'Reinforcement learning 3 - Policy Gradient'
 date: 2025-07-05
 permalink: /posts/reinforcement-learning-3/
+excerpt: 'Policy Gradient cho phép mô hình học trực tiếp chính sách hành động thông qua tối ưu hóa gradient. Kỹ thuật này đặc biệt hiệu quả trong các bài toán có không gian hành động liên tục hoặc phức tạp.'
 tags:
   - reinforcement learning
 ---
