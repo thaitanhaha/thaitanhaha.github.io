@@ -1,6 +1,7 @@
 ---
 title: "A"
 excerpt: "ABC<br/><img src='/images/500x300.png'>"
+date: 2012-03
 collection: socials
 ---
 
