@@ -226,6 +226,9 @@ collections:
   portfolio:
     output: true
     permalink: /:collection/:path/
+  socials:
+    output: true
+    permalink: /:collection/:path/
   talks:
     output: true
     permalink: /:collection/:path/
@@ -277,6 +280,15 @@ defaults:
       layout: single
       author_profile: true
       share: true
+      comment: true
+  # _socials
+  - scope:
+      path: ""
+      type: socials
+    values:
+      layout: single
+      author_profile: true
+      share: false
       comment: true
   # _talks
   - scope:
