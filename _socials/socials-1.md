@@ -1,7 +1,7 @@
 ---
-title: "A"
+title: "AB"
 excerpt: "ABC<br/><img src='/images/500x300.png'>"
-date: 2012-03
+date: 2012-03-01
 collection: socials
 ---
 
