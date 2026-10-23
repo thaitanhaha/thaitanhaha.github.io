@@ -25,7 +25,7 @@ We define the key components of the transport space
 
 We need to define the push-forward operator. Let \\(f: X \to Y\\) be a measurable function between two measurable spaces \\((X, \Sigma_X)\\) and \\((Y, \Sigma_Y)\\), and let \\(\mu: \Sigma_X \to [0,+\infty)\\) be a measure on \\(X\\). The pushforward of \\(\mu\\) by \\(f\\), denoted as \\(f_\\#\mu\\), is a measure \\(f_{\\#}\mu: \Sigma_Y \to [0,+\infty)\\) on \\(Y\\) given by
 
-$$(f_{\\#}\mu)(B)=\mu (f^{-1}(B)), \qquad B \in \Sigma_Y.$$
+$$(f_{\#}\mu)(B)=\mu (f^{-1}(B)), \qquad B \in \Sigma_Y.$$
 
 
 In 1781, French mathematician Gaspard Monge proposed looking for a deterministic mapping \\(T: X \to Y\\) that moves the entire mass from \\(X\\) to \\(Y\\). This mapping must satisfy the push-forward condition \\(T_\\#\mu = \nu\\), ensuring that the transported mass exactly matches the target distribution. The goal is to minimize the total transportation cost
@@ -720,8 +720,8 @@ plot_gw_alignment(X, Y, optimal_plan)
 
 <table>
   <tr>
-    <td><img src="../images/OT/Figure_1.png" width="100%"></td>
-    <td><img src="../images/OT/Figure_2.png" width="100%"></td>
+    <td><img src="..//images//OT//Figure_1.png" width="100%"></td>
+    <td><img src="..//images/OT//Figure_2.png" width="100%"></td>
   </tr>
 </table>
 
