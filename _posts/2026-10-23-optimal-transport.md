@@ -463,7 +463,7 @@ plt.savefig("color_transfer_result.png", dpi=300, bbox_inches="tight")
 
 </details>
 
-![color_transfer_result](..\images\OT\color_transfer_result.png)
+![color_transfer_result](/images/OT/color_transfer_result.png)
 
 
 #### Aligning Latent Embeddings
@@ -720,8 +720,8 @@ plot_gw_alignment(X, Y, optimal_plan)
 
 <table>
   <tr>
-    <td><img src="..//images//OT//Figure_1.png" width="100%"></td>
-    <td><img src="..//images/OT//Figure_2.png" width="100%"></td>
+    <td><img src="/images/OT/Figure_1.png" width="100%"></td>
+    <td><img src="/images/OT/Figure_2.png" width="100%"></td>
   </tr>
 </table>
 
